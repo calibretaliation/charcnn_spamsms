@@ -207,4 +207,6 @@ print(summary)
 early_stop_callback = EarlyStopping(monitor='val_acc', min_delta=0.00, patience=5, mode='max')
 checkpoint_callback = ModelCheckpoint(monitor='val_acc', save_top_k=1, mode='max')
 trainer = pl.Trainer(callbacks=[early_stop_callback, checkpoint_callback], max_epochs=100,accelerator="gpu", devices=1)
+# trainer = pl.Trainer(callbacks=[checkpoint_callback], max_epochs=100,accelerator="gpu", devices=1)
+
 trainer.fit(model)
